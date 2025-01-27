@@ -29,7 +29,7 @@ btn2.removeEventListener('click', click_btn)
 btn2.addEventListener("click", () => {click_btn(60)})
 
 btn3.removeEventListener('click', click_btn)
-btn3.addEventListener("click", () => {click_btn(10)})
+btn3.addEventListener("click", () => {click_btn(30)})
 
 function click_btn1() {
     console_html.innerHTML = 'Налаштування'
@@ -58,6 +58,7 @@ function click_btn(input_time=30) {
 }
 
 function click_btn3() {
+        question.style.display = 'block'
         console_html.innerHTML = `Час: ${time} секунд`
         document.querySelector('.container-main').style.display = 'none'
         main_container.style.display = 'flex'
@@ -76,17 +77,20 @@ function click_btn3() {
                 Це ${roundNum(total_correct_answers * 100 / total_answers_given)}%`
 
             question.style.display = 'none'
-            document.querySelector('.container-main').style.display = 'none'
+            main_container.style.display = 'none'
+            document.querySelector('.container-main').style.display = 'flex'
             settingsBtn.style.display = 'block'
             settingsBtn.innerHTML = 'Заново' 
-            main_container.style.display = 'none'  
+            
+            title.style.display = 'none'
+            btn1.style.display = 'none'
+            btn2.style.display = 'none'
+            btn3.style.display = 'none'
 
             settingsBtn.removeEventListener('click', click_btn3)
             settingsBtn.addEventListener("click", click_btn1)
         }, (time * 1000))
     }
-
-btn1.addEventListener("click", click_btn1)
 
 function randint(min, max) {
     return Math.round(Math.random() * (max-min) + min)
