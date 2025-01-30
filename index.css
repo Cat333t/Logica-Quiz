@@ -23,6 +23,7 @@ body{
 .title{
     font-size: 45px;
     display: none;
+    color: transparent;
 }
 
 .container-btns{
@@ -65,6 +66,10 @@ body{
     cursor: pointer;
 }
 
+.answer:hover{
+    border: 2px solid green;
+}
+
 .btn-start{
     font-size: 30px;
     border: 2px rgb(255, 255, 255) solid;
@@ -83,15 +88,20 @@ body{
 .btns{
     font-size: 25px;
     padding: 10px;
-
+    
     border: 2px solid #FFFFFF;
     border-radius: 50px;
     margin: 10px;
 
+    cursor: pointer;
 }
 
 .btn1, .btn2, .btn3{
     display: none;
+
+    border: transparent 2px solid;
+    color: transparent;
+
 }
 
 .btns:hover{
@@ -103,3 +113,4 @@ body{
     transition-duration: 0.1s;
     scale: 0.9;
 }
+

@@ -32,16 +32,34 @@ btn3.removeEventListener('click', click_btn)
 btn3.addEventListener("click", () => {click_btn(30)})
 
 function click_btn1() {
+    settingsBtn.style.border = 'transparent 2px solid'
+    settingsBtn.style.color = 'transparent' 
     console_html.innerHTML = 'Налаштування'
     title.style.display = 'block'
-    title.innerHTML = 'Виберить час:'
-    title.innerHTML = 'Вибрати час'
+    anime({
+        targets: '.title',
+        delay: 0,
+        duration: 1000,
+        color: '#13A10E',
+    })
+    title.innerHTML = 'Виберіть час:'
     settingsBtn.style.display = 'none'
+    anime({
+        targets: ['.btn1', '.btn2', '.btn3'],
+        delay: 0, 
+        duration: 1000,
+        border: '2px solid rgb(255, 255, 255)',
+        color: '#13A10E',
+        easing: 'linear'
+    })
     btn1.style.display = 'block'
     btn2.style.display = 'block'
     btn3.style.display = 'block'   
+
 }
 function click_btn(input_time=30) {
+    
+
     time = input_time
 
     console_html.innerHTML = 'Запуск...'
@@ -50,6 +68,14 @@ function click_btn(input_time=30) {
     settingsBtn.style.paddingLeft = '50px'
     settingsBtn.style.paddingRight  = '50px'
     settingsBtn.style.display = 'block'
+    anime({
+        targets: '.settings-btn',
+        delay: 0, 
+        duration: 1000,
+        border: '2px solid rgb(255, 255, 255)',
+        color: '#13A10E',
+        easing: 'linear'
+    })
     btn1.style.display = 'none'
     btn2.style.display = 'none'
     btn3.style.display = 'none'
@@ -72,6 +98,16 @@ function click_btn3() {
         timer = setTimeout(timerfn, 1000)
 
         setTimeout(() => {
+            settingsBtn.style.border = 'transparent 2px solid'
+            settingsBtn.style.color = 'transparent'
+
+            btn1.style.border = 'transparent 2px solid'
+            btn1.style.color = 'transparent'
+            btn2.style.border = 'transparent 2px solid'
+            btn2.style.color = 'transparent'
+            btn3.style.border = 'transparent 2px solid'
+            btn3.style.color = 'transparent'
+
             clearTimeout(timer)
             console_html.innerHTML = `Ви дали ${total_correct_answers} правильних відповідей.<br>
                 Це ${roundNum(total_correct_answers * 100 / total_answers_given)}%`
@@ -86,6 +122,15 @@ function click_btn3() {
             btn1.style.display = 'none'
             btn2.style.display = 'none'
             btn3.style.display = 'none'
+
+            anime({
+                targets: '.settings-btn',
+                delay: 0, 
+                duration: 1000,
+                border: '2px solid rgb(255, 255, 255)',
+                color: '#13A10E',
+                easing: 'linear'
+            })
 
             settingsBtn.removeEventListener('click', click_btn3)
             settingsBtn.addEventListener("click", click_btn1)
@@ -189,3 +234,5 @@ for(let i =0; i<answers.length; i++) {
         current_question.show()
     })
 }
+
+
