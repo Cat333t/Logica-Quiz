@@ -109,7 +109,7 @@ function click_btn3() {
             btn3.style.color = 'transparent'
 
             clearTimeout(timer)
-            console_html.innerHTML = `Ви дали ${total_correct_answers} правильних відповідей.<br>
+            console_html.innerHTML = `Ви дали ${total_correct_answers} правильних відповідей з ${total_answers_given}.<br>
                 Це ${roundNum(total_correct_answers * 100 / total_answers_given)}%`
 
             question.style.display = 'none'
