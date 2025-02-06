@@ -13,6 +13,51 @@ let btn3 = document.querySelector(".btn3")
 let time
 let timeout
 
+
+function createClickEffect(event) {
+    let circle = document.createElement("div");
+    circle.classList.add("click-effect");
+    document.body.appendChild(circle);
+    
+    let size = 100;
+    circle.style.width = `${size}px`;
+    circle.style.height = `${size}px`;
+    circle.style.left = `${event.clientX - size / 2}px`;
+    circle.style.top = `${event.clientY - size / 2}px`;
+    
+    anime({
+        targets: circle,
+        scale: [0, 1.5],
+        opacity: [1, 0],
+        duration: 500,
+        easing: 'easeOutQuad',
+        complete: () => circle.remove()
+    });
+}
+
+// Добавляем эффект пульсации на все кнопки и ответы
+let buttons = document.querySelectorAll("body");
+buttons.forEach(button => {
+    button.addEventListener("mousedown", (event) => {
+        createClickEffect(event);
+    });
+});
+
+// Добавляем стили для эффекта
+let style = document.createElement('style');
+style.innerHTML = `
+    .click-effect {
+        position: absolute;
+        background: green;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: scale(0);
+    }
+`;
+document.head.appendChild(style);
+
+
+
 function timerfn() {
     time -= 1
     console_html.innerHTML = `Час: ${time} секунд`
